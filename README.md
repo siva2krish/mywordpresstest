@@ -36,8 +36,7 @@ That’s it, now we have a working Helm and Tiller setup.
 ```
 # experiment
 
-**Based on my recent experience using helm in advance level by converting Redhat OpenShift Templates to Helm charts,
-  it is quite good experience to end with a sucessfull usecase**
+**I used Nginx Helm Chart as an example.the idea behind is identical: deploy a ready-to-use Nginx continaer both in OpenShift and Kubernetes…**
 
 **Openshift code for nginx service deployment**
 
@@ -349,6 +348,10 @@ apiVersion: extensions/v1beta1
 	    {{- end }}
 
 ```
+
+# Conclusion 
+       Based on my recent experience using helm in advance level by converting Redhat OpenShift Templates to Helm charts,
+  it is quite good experience to end with a sucessfull usecase.
 
 
 
