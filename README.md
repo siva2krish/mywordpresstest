@@ -1,7 +1,7 @@
 
 # Helm Blog
 **Motivation**
-```
+
 OpenShift is an application platform built around a Kubernetes core. Distilling decades of experience with container clusters, 
 Kubernetes has quickly become the defacto system for orchestrating containers on Linux. 
 OpenShift employs standard Kubernetes mechanisms to maintain compatibility with both interfaces and techniques, 
@@ -13,14 +13,14 @@ In fact, Routes and the OpenShift experience supporting them in production envir
 and that’s exactly what participation in a community like Kubernetes is all about.
 I was curious about some of Openshift’s extended features. In particular, 
 I wanted to explore the differences between Kubernetes Deployments and OpenShift’s Deployment Configurations.
-```
+
 **What is Helm?**
-```
+
 If you’re already familiar with Helm you can skip this section and scroll down to Creating new charts and keep reading. Helm is the de facto application for management on Kubernetes. It is officially a CNCF incubator project.
 “Helm helps you manage Kubernetes applications — Helm Charts helps you define, install, and upgrade even the most complex Kubernetes application.” - https://helm.sh/
 Helm’s operation is based on cooperation between two main components: a command line tool called helm, and a server component called tiller, which has to run on the cluster it manages.
 The main building block of Helm based deployments are Helm Charts: these charts describe a configurable set of dynamically generated Kubernetes resources. The charts can either be stored locally or fetched from remote chart repositories.
-```
+
 **INSTALLING HELM**
 ```
 To install the helm command use a supported package manager, or simply download the pre-compiled binary:
