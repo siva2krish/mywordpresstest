@@ -38,10 +38,13 @@ $ kubectl config use-context docker-for-desktop
 $ helm init
 That’s it, now we have a working Helm and Tiller setup.
 ```
+# experiment
+
 **Based on my recent experience using helm in advance level by converting Redhat OpenShift Templates to Helm charts,
   it is quite good experience to end with a sucessfull usecase**
 
-**Openshift code for nginx service**
+**Openshift code for nginx service deployment**
+
 ```
 apiVersion: v1	
 		kind: Template
@@ -154,7 +157,7 @@ apiVersion: v1
 		        - type: ConfigChange
 		    status: {}
 ```
-**Helm code after converted from OpenShift template**
+**Helm code after converted from OpenShift template for nginx service**
 
 ```
 
