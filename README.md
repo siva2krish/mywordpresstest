@@ -1,18 +1,14 @@
 
 # Helm Blog
-**Motivation**
 
-OpenShift is an application platform built around a Kubernetes core. Distilling decades of experience with container clusters, 
-Kubernetes has quickly become the defacto system for orchestrating containers on Linux. 
-OpenShift employs standard Kubernetes mechanisms to maintain compatibility with both interfaces and techniques, 
-but as an enterprise distribution, ready for production deployment and day-zero support of critical applications, 
-it extends and diverges from “vanilla” Kubernetes in some ways.
-Where OpenShift differs, it is often where no equivalent feature existed in the upstream core version at the time Red Hat needed 
-to deliver it. OpenShift Routes, for example, predate the related Ingress resource that has since emerged in upstream Kubernetes. 
-In fact, Routes and the OpenShift experience supporting them in production environments helped influence the later Ingress design,
-and that’s exactly what participation in a community like Kubernetes is all about.
-I was curious about some of Openshift’s extended features. In particular, 
-I wanted to explore the differences between Kubernetes Deployments and OpenShift’s Deployment Configurations.
+**Goal**
+
+OpenShift is an application platform built around a Kubernetes core. Distilling decades of experience with container clusters, Kubernetes has quickly become the defacto system for orchestrating containers on Linux. OpenShift employs standard Kubernetes mechanisms to maintain compatibility with both interfaces and techniques, but as an enterprise distribution, ready for production deployment and day-zero support of critical applications, it extends and diverges from “vanilla” Kubernetes in some ways.
+
+Where OpenShift differs, it is often where no equivalent feature existed in the upstream core version at the time Red Hat needed to deliver it. OpenShift Routes, for example, predate the related Ingress resource that has since emerged in upstream Kubernetes. In fact, Routes and the OpenShift experience supporting them in production environments helped influence the later Ingress design, and that’s exactly what participation in a community like Kubernetes is all about.
+
+I was curious about some of Openshift’s extended features. In particular, I wanted to explore the differences between Kubernetes Deployments and OpenShift’s Deployment Configurations.
+here comes "HELM"
 
 **What is Helm?**
 
