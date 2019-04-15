@@ -349,12 +349,7 @@ apiVersion: extensions/v1beta1
 
 ```
 
-# Conclusion 
-       Based on my recent experience using helm in advance level by converting Redhat OpenShift Templates to Helm charts,
+# Conclusion        
+       
+  Based on my recent experience using helm in advance level by converting Redhat OpenShift Templates to Helm charts,
   it is quite good experience to end with a sucessfull usecase.
-
-
-
-
-
- 
