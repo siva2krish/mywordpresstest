@@ -348,6 +348,42 @@ apiVersion: extensions/v1beta1
 	    {{- end }}
 
 ```
+# Testing
+```
+I assume you have either Openshift or Kubernetes cluster ready for testing 
+
+First, we will grant cluster-admin rights to the kube-system default service account, where Tiller will be deployed. If not, Tiller will need to be granted admin rights in every namespace where it tries to deploy. Remember to grant rights using a cluster-admin user. 
+
+Then, grant cluster-admin rights to the kube-system namespace’s default kube-system service account:
+oc adm policy add-cluster-role-to-user cluster-admin -z default --namespace kube-system
+
+Use a cluster-admin user for this test. Deploy Tiller, using:
+##############################################
+### HELM CLIENT BINARY INSTALLATION
+##############################################
+curl -s https://storage.googleapis.com/kubernetes-helm/helm-v2.6.1-linux-amd64.tar.gz | tar xz
+mv linux-amd64/helm /usr/local/bin
+chmod a+x /usr/local/bin/helm
+helm init --client-only
+REGISTRY=docker-registry.default.svc:5000
+SERVICE_NAME="nginx"
+NGINX_SERVICE_NAME="nginx"
+PHP_SERVICE_NAME="php"
+NGINX_SERVICE_NAME_IMAGE="${MAP_SERVICE_NAME_TO_IMAGENAME[${NGINX_SERVICE_NAME}]}"
+PHP_SERVICE_NAME_IMAGE="php-myname"
+NGINX_SERVICE_NAME_IMAGE_HASH="${IMAGE_HASHES[${NGINX_SERVICE_NAME_IMAGE}]}"
+PHP_SERVICE_NAME_IMAGE_HASH="${IMAGE_HASHES[${PHP_SERVICE_NAME_IMAGE}]}"
+PERSISTENT_STORAGE_SIZE="5Gi"
+PERSISTENT_STORAGE_PATH="/app/web/sites/default/files/"
+SERVICE_IMAGE=${NGINX_SERVICE_NAME_IMAGE}
+
+HELM_DEPLOYMENT_TEMPLATE="/oc-build-deploy/helm-charts/${SERVICE_NAME}"
+if [ -d "${HELM_DEPLOYMENT_TEMPLATE}" ]; then
+
+  helm install --name snpnginxphppersi1-helm /oc-build-deploy/helm-charts/${SERVICE_NAME} --set image.nginxRepository=${NGINX_SERVICE_NAME_IMAGE_HASH} --set image.phpRepository=${PHP_SERVICE_NAME_IMAGE_HASH} --set SERVICE_NAME=${SERVICE_NAME} --set OPENSHIFT_PROJECT=${OPENSHIFT_PROJECT} --set LAGOON_GIT_SHA=${LAGOON_GIT_SHA} --set PROJECT=${PROJECT} --set SAFE_BRANCH=${SAFE_BRANCH} --set SAFE_PROJECT=${SAFE_PROJECT} --set BRANCH=${BRANCH} --set ENVIRONMENT_TYPE=${ENVIRONMENT_TYPE} --set MONITORING_URLS=${MONITORING_URLS} --set OPENSHIFT_NAME=${OPENSHIFT_NAME} --set REGISTRY=${REGISTRY} --set CRONJOBS=${CRONJOBS} --set SERVICE_IMAGE=${SERVICE_NAME_IMAGE_HASH} --set DEPLOYMENT_STRATEGY=${DEPLOYMENT_STRATEGY} --namespace ${OPENSHIFT_PROJECT} --set PHP_SERVICE_NAME=${PHP_SERVICE_NAME} --set PHP_SERVICE_IMAGE=${PHP_SERVICE_NAME_IMAGE} --set NGINX_SERVICE_NAME=${NGINX_SERVICE_NAME} --set NGINX_SERVICE_IMAGE=${NGINX_SERVICE_NAME_IMAGE} --set PERSISTENT_STORAGE_SIZE=${PERSISTENT_STORAGE_SIZE} --set PERSISTENT_STORAGE_PATH=${PERSISTENT_STORAGE_PATH}
+
+fi
+```
 
 # Conclusion        
        
